@@ -1,0 +1,5 @@
+FROM mjeromin/toolbag:latest
+
+RUN set -x && \
+    dnf install -y mongodb && \
+    dnf clean all

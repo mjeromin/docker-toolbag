@@ -1,2 +1,12 @@
 # docker-toolbag
-A container for tools.
+A place for tools when you find yourself without them.
+
+## usage
+```
+docker container run --rm -it mjeromin/toolbag
+```
+
+## tags
+* latest
+* mongo
+
