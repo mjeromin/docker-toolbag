@@ -1,5 +1,4 @@
-FROM mjeromin/toolbag:latest
+FROM mjeromin/toolbag
 
-RUN set -x && \
-    dnf install -y mongodb && \
-    dnf clean all
+RUN set -x && apk add --no-cache mongodb \
+                                 mongodb-tools

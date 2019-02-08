@@ -9,4 +9,5 @@ docker container run --rm -it mjeromin/toolbag
 ## tags
 * latest
 * mongo
-
+* alpine
+* fedora 
