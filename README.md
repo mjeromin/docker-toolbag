@@ -10,4 +10,5 @@ docker container run --rm -it mjeromin/toolbag
 * latest
 * mongo
 * alpine
-* fedora 
+* fedora
+* kafkatools

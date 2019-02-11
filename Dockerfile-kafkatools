@@ -1,0 +1,25 @@
+FROM mjeromin/toolbag
+
+ENV KAFKA_VERSION 2.1.0
+ENV SCALA_VERSION 2.12
+
+RUN set -x && apk add --no-cache gcc \
+                                 g++ \
+                                 make \
+                                 python3 \
+                                 python3-dev \
+                                 libffi-dev \
+                                 openssl-dev \
+                                 coreutils \
+                                 ca-certificates \
+                                 openjdk8-jre \
+                                 jq && \
+    python3 -m ensurepip && \
+    pip3 install --upgrade pip && \
+    pip3 install kafka-tools paramiko && \
+    mirror=$(curl --stderr /dev/null https://www.apache.org/dyn/closer.cgi\?as_json\=1 | jq -r '.preferred') && \
+    curl -sSL "${mirror}kafka/${KAFKA_VERSION}/kafka_${SCALA_VERSION}-${KAFKA_VERSION}.tgz" | \
+    tar -xzf - -C /usr/local && \
+    mv /usr/local/kafka_${SCALA_VERSION}-${KAFKA_VERSION} /usr/local/kafka && \
+    rmdir /usr/local/bin && \
+    ln -s /usr/local/kafka/bin /usr/local/bin
